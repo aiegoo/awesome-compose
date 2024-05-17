@@ -76,3 +76,211 @@ Stop and remove the containers
 ```
 $ docker compose down
 ```
+
+## sample exec cli
+>Container ID: f05504ed8149 (llmware)
+
+```bash
+docker exec -it f05504ed8149 /bin/bash
+# Sample command
+echo "Hello from llmware container"
+```
+
+> Container ID: 42c5aa9fb058 (milvus)
+
+```bash
+docker exec -it 42c5aa9fb058 /bin/bash
+# Sample command
+echo "Hello from milvus container"
+
+
+```
+Container ID: eb7e4e96894a (milvus-etcd)
+```bash
+docker exec -it eb7e4e96894a /bin/sh
+# Sample command
+echo "Hello from milvus-etcd container"
+
+
+```
+Container ID: 64b84ceab0bf (devneo4j)
+```bash
+docker exec -it 64b84ceab0bf /bin/bash
+# Sample command
+echo "Hello from devneo4j container
+
+
+```
+Container ID: b6a38a425970 (mongodb)
+```bash
+docker exec -it b6a38a425970 /bin/bash
+# Sample command
+echo "Hello from mongodb container"
+
+
+```
+Container ID: 82ec18db5c59 (milvus-minio)
+```bash
+docker exec -it 82ec18db5c59 /bin/sh
+# Sample command
+echo "Hello from milvus-minio container"
+
+
+```
+
+```bash
+
+
+```
+
+```bash
+
+
+```
+To explore the details and configurations of each container, you will need to access the container's shell and navigate or inspect relevant files or settings. Here's a more detailed approach for each container listed:
+
+### Detailed Instructions for Each Container
+
+#### Container ID: `f05504ed8149` (llmware)
+
+1. **Access the shell:**
+    ```bash
+    docker exec -it f05504ed8149 /bin/bash
+    ```
+
+2. **Run some example commands:**
+    - Check running processes:
+        ```bash
+        ps aux
+        ```
+    - List directory contents:
+        ```bash
+        ls -la
+        ```
+    - View environment variables:
+        ```bash
+        printenv
+        ```
+
+#### Container ID: `42c5aa9fb058` (milvus)
+
+1. **Access the shell:**
+    ```bash
+    docker exec -it 42c5aa9fb058 /bin/bash
+    ```
+
+2. **Run some example commands:**
+    - Check Milvus configuration:
+        ```bash
+        cat /etc/milvus/config.yaml
+        ```
+    - Check logs:
+        ```bash
+        tail -f /var/log/milvus/milvus.log
+        ```
+
+#### Container ID: `eb7e4e96894a` (milvus-etcd)
+
+1. **Access the shell:**
+    ```bash
+    docker exec -it eb7e4e96894a /bin/sh
+    ```
+
+2. **Run some example commands:**
+    - View etcd settings:
+        ```bash
+        etcdctl get / --prefix --keys-only
+        ```
+    - Check etcd health:
+        ```bash
+        etcdctl endpoint health
+        ```
+
+#### Container ID: `64b84ceab0bf` (devneo4j)
+
+1. **Access the shell:**
+    ```bash
+    docker exec -it 64b84ceab0bf /bin/bash
+    ```
+
+2. **Run some example commands:**
+    - Check Neo4j configuration:
+        ```bash
+        cat /var/lib/neo4j/conf/neo4j.conf
+        ```
+    - Check Neo4j logs:
+        ```bash
+        tail -f /var/log/neo4j/neo4j.log
+        ```
+
+#### Container ID: `b6a38a425970` (mongodb)
+
+1. **Access the shell:**
+    ```bash
+    docker exec -it b6a38a425970 /bin/bash
+    ```
+
+2. **Run some example commands:**
+    - Access MongoDB shell:
+        ```bash
+        mongo
+        ```
+    - Check MongoDB logs:
+        ```bash
+        tail -f /var/log/mongodb/mongod.log
+        ```
+    - View MongoDB configuration:
+        ```bash
+        cat /etc/mongod.conf
+        ```
+
+#### Container ID: `82ec18db5c59` (milvus-minio)
+
+1. **Access the shell:**
+    ```bash
+    docker exec -it 82ec18db5c59 /bin/sh
+    ```
+
+2. **Run some example commands:**
+    - Check MinIO configuration (usually MinIO runs with environment variables):
+        ```bash
+        printenv | grep MINIO_
+        ```
+    - List MinIO server files:
+        ```bash
+        mc ls myminio/
+        ```
+    - Check MinIO logs:
+        ```bash
+        cat /root/.minio.log
+        ```
+
+### General Steps for Each Container
+1. **Access the container shell using `docker exec -it <container_id> /bin/bash` or `/bin/sh`.**
+2. **Navigate the filesystem to relevant configuration or log files.**
+3. **Use CLI tools available in the container to inspect or manage the service.**
+
+### Example for NGINX (General Approach)
+If you had an NGINX container, the steps would be:
+1. **Access the shell:**
+    ```bash
+    docker exec -it <nginx_container_id> /bin/bash
+    ```
+
+2. **Inspect NGINX configuration:**
+    ```bash
+    cat /etc/nginx/nginx.conf
+    ```
+
+3. **Check running NGINX processes:**
+    ```bash
+    ps aux | grep nginx
+    ```
+
+4. **Inspect NGINX logs:**
+    ```bash
+    tail -f /var/log/nginx/access.log
+    tail -f /var/log/nginx/error.log
+    ```
+
+These commands and steps will help you explore the configurations and settings of each container. Adjust the file paths and commands according to the specific services and configurations of your containers.
